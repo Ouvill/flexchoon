@@ -1,0 +1,81 @@
+\documentclass[tate,
+book,
+paper=a6paper, % 用紙サイズ
+% landscape, 
+onecolumn, % 一段組 
+fontsize=9pt, %フォントサイズ
+baselineskip=1.618zw, % 行送り
+% head_space=15mm, % ヘッダースペース
+% foot_space=12mm, % フッタースペース
+% fore-edge=12mm, % 小口の余白
+% gutter=12mm, % ノドの余白
+hanging_punctuation % ぶら下げ組を有効にする
+]{jlreq}
+
+\usepackage{../flexchoon}
+\usepackage{../flexwave}
+\usepackage{mystyle}
+\usepackage{luatexja-fontspec} % フォント設定
+
+\setmainjfont{GenEi Koburi Mincho v6}
+
+\newjfontfamily{\fontKoburi}{GenEi Koburi Mincho v6}
+\newjfontfamily{\fontChikugo}{GenEi Chikugo Mincho v3}
+\newjfontfamily{\fontShippori}{Shippori Mincho OTF}
+\newjfontfamily{\fontIPA}{IPAexGothic}
+
+\begin{document}
+
+\section{flexchoon パッケージ}
+
+\LaTeX で長い長音「ー」を出力するためのパッケージです。
+
+\vspace{0.5\baselineskip}
+
+「うおぉーーーっ！」（長音の連続）
+
+「うおぉ―――っ！」（全角ダッシュ）
+
+↓　これがこうできる。
+
+「うおぉ\flexchoon{3}っ」
+
+{\footnotesize ※この文書のフォントは源暎こぶり明朝}
+
+\vspace{0.5\baselineskip}
+
+\subsection{長さは自由}
+
+長音の長さは自由に設定できます。
+
+\begin{itemize}
+    \item 「うおぉ\flexchoon{1}っ！」（長音一文字分）
+    \item 「うおぉ\flexchoon{2}っ！」（長音二文字分）
+    \item 「うおぉ\flexchoon{3}っ！」（長音三文字分）
+    \item 「うおぉ\flexchoon{5}っ！」（長音五文字分）
+    \item 「うおぉ\flexchoon{8}っ！」（長音八文字分）
+\end{itemize}
+
+\subsection{各種フォントで使用可能}
+
+{\fontKoburi「うおぉ\flexchoon{3}っ！」 源暎こぶり明朝}
+
+{\fontChikugo「うおぉ\flexchoon{3}っ！」源暎ちくご明朝}
+
+{\fontShippori「うおぉ\flexchoon{3}っ！」しっぽり明朝}
+
+{\fontIPA「うおぉ\flexchoon{3}っ！」ＩＰＡゴシック}
+
+\section{flexwave パッケージ}
+
+\LaTeX で波形を出力するためのパッケージです。
+
+「うわ〜〜〜っ！」
+
+「うわ〰〰〰っ！」
+
+↓　これがこうできる。
+
+「うわ\flexwave{3}っ」
+
+\end{document}

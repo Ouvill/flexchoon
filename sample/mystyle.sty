@@ -1,0 +1,25 @@
+% 本文中の section（節） 設定
+\ModifyHeading{section}{
+    format={#2},
+    font={\normalsize},
+    indent=4\zw,
+    lines=1,         % section の行数
+    before_lines=0.5,  % section の前の空行数
+    after_lines=0.5,   % section の後の空行数
+    after_label_space=1\zw,  
+    label_format={\thesection},% 「1.」のように表示
+    pagebreak=clearpage,
+}
+
+% 本文中の section（節） 設定
+\ModifyHeading{subsection}{
+    format={#2},
+    font={\normalsize},
+    indent=4\zw,
+    lines=1,         % section の行数
+    before_lines=0.5,  % section の前の空行数
+    after_lines=0.5,   % section の後の空行数
+    after_label_space=1\zw,  
+    label_format={\thesection},% 「1.」のように表示
+    pagebreak=clearpage,
+}
