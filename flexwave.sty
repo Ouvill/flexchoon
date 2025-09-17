@@ -1,0 +1,64 @@
+% flexwave.sty
+% 連続波線パッケージ
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{flexwave}[2025/09/11 Flexible wave line package]
+
+% 必要なパッケージ
+\RequirePackage{tikz}
+\RequirePackage{xcolor}
+\RequirePackage{luatexja-adjust}  % 禁則処理
+\RequirePackage{luacode}
+
+% 縦書き・横書き判定とベースライン調整のLuaコード
+\begin{luacode}
+    amplitude = 0.08  -- 波の振幅（高さ）
+    kerning = 0.15    -- 波線の前後の余白（文字幅に対する割合）
+    
+    function is_tate_mode()
+        -- LuaTeX-jaの組方向パラメータを取得して縦書き判定
+        local direction = luatexja.direction.get_dir_count()
+        return direction and direction % 8 == 3
+    end
+    
+    function get_optimal_baseline()
+        if is_tate_mode() then
+            -- 縦書きの場合は調整不要
+            return "0pt"
+        else
+            -- 横書きの場合は波線の中心を文字の中央に配置
+            return "-0.3\\zh"
+        end
+    end
+
+    function get_wave_y(x)
+        -- 波のy座標を計算（振幅と位相を考慮）
+        local phase = is_tate_mode() and (180) or (90)
+        return amplitude * math.sin(math.rad((360 + (kerning * 360)) * x + phase))
+    end
+\end{luacode}
+
+% 線幅指定版（内部実装）
+\newcommand{\flexwavewidth@internal}[2]{%
+% 波線を描写（指定した文字数分の正確な長さで描画）
+\hbox to #1\zw{%
+% 波線の数だけ透明の「〜」を重ねる。読み上げソフト対策
+\rlap{\textcolor{white!0}{\count0=0 \loop 〜\advance\count0 by 1 \ifnum\count0<#1 \repeat}}%
+\kern\directlua{tex.print(kerning)}\zw% 波線の前に少しスペース
+\begin{tikzpicture}[baseline=\directlua{tex.print(get_optimal_baseline())}, x=\zw, y=\zh]
+\draw[line width=#2,line cap=round] plot[domain=0:{#1-\directlua{tex.print(kerning*2)}},samples={25+25*#1},smooth] (\x,{\directlua{tex.print(get_wave_y(\x))}});
+\end{tikzpicture}%
+\hfill%
+}%
+}
+
+% 行頭禁則処理付きの連続波線コマンド（基本版）
+\newcommand{\flexwave}[1]{%
+\penalty10000\flexwavewidth@internal{#1}{0.05*\zw}% 行頭に来ることを強く抑制
+}
+
+% 行頭禁則処理付きの線幅指定版
+\newcommand{\flexwavewidth}[2]{%
+\penalty10000\flexwavewidth@internal{#1}{#2}% 行頭に来ることを強く抑制
+}
+
+\endinput
