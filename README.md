@@ -4,6 +4,8 @@ LaTeX で長音記号（ー）と波線（〜）を任意の長さで表示す�
 
 [English README](README_en.md)
 
+![flexchoonデモ画像](https://private-user-images.githubusercontent.com/12369770/491189909-59f0d85d-f33c-4a52-80c5-9c0cd54ec66b.png?jwt=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3NTgyMTM1NjMsIm5iZiI6MTc1ODIxMzI2MywicGF0aCI6Ii8xMjM2OTc3MC80OTExODk5MDktNTlmMGQ4NWQtZjMzYy00YTUyLTgwYzUtOWMwY2Q1NGVjNjZiLnBuZz9YLUFtei1BbGdvcml0aG09QVdTNC1ITUFDLVNIQTI1NiZYLUFtei1DcmVkZW50aWFsPUFLSUFWQ09EWUxTQTUzUFFLNFpBJTJGMjAyNTA5MTglMkZ1cy1lYXN0LTElMkZzMyUyRmF3czRfcmVxdWVzdCZYLUFtei1EYXRlPTIwMjUwOTE4VDE2MzQyM1omWC1BbXotRXhwaXJlcz0zMDAmWC1BbXotU2lnbmF0dXJlPTNiOTQ5NWZiZjMwNmIyMzIxMmU3ZGFkZTdiN2U0OTk0MDkxNmIyNTVlYTY1OTA4ZDlkYjBhZjJiMWZlYjE2YTEmWC1BbXotU2lnbmVkSGVhZGVycz1ob3N0In0.SuxsOeNyCDZcYphW1bUV1jdlQyPkpLDz5QX8-e6bz1w)
+
 ## 概要
 
 このプロジェクトは2つのパッケージを提供します：
